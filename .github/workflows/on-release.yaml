@@ -9,7 +9,7 @@ on:
 
 jobs:
   publish-tauri:
-    if: startsWith(github.head_ref, 'changeset-release')
+#    if: startsWith(github.head_ref, 'changeset-release')
     permissions:
       contents: write
     strategy:
@@ -121,8 +121,8 @@ jobs:
           files: |
             src-tauri/target/release/bundle/nsis/Ganymede_x64-setup.exe
             src-tauri/target/release/bundle/appimage/*.AppImage
-      - name: Upload debug informations to Sentry (windows)
-        if: matrix.platform == 'windows-latest'
-        run: |
-          pnpm sentry-cli debug-files bundle-sources src-tauri/target/release/ganymede.pdb
-          pnpm sentry-cli debug-files upload --auth-token=${{ secrets.SENTRY_AUTH_TOKEN }} src-tauri/target/release/ganymede.pdb src-tauri/target/release/ganymede.src.zip
+#      - name: Upload debug informations to Sentry (windows)
+#        if: matrix.platform == 'windows-latest'
+#        run: |
+#          pnpm sentry-cli debug-files bundle-sources src-tauri/target/release/ganymede.pdb
+#          pnpm sentry-cli debug-files upload --auth-token=${{ secrets.SENTRY_AUTH_TOKEN }} src-tauri/target/release/ganymede.pdb src-tauri/target/release/ganymede.src.zip
